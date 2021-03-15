@@ -26,35 +26,32 @@ con difficoltà 2 => tra 1 e 50 -->
 
             function campoMinato() {
                 var numbers = [];
-                while (numers.length < 16) {
+                while (numbers.length < 16) {
                     var rnd = Math.floor(Math.random() * 100) + 1;
-                    for (var j = 0; j <= (numbers.length); j++) {
                         if (numbers.includes(rnd)) {
-                            break
                         }else {
                             numbers.push (rnd);
-                            break
                         }
-                    }
+                    
                 }
                 console.log(numbers);
                 var usersNumber;
                 var usersNumbers = [];
-                while (usersNumbers.length < 5) {
-                    usersNumber = prompt("inserisci un numero tra 1 a 100, diverso da quelli inseriti in precedenza");
-                    // document.getElementById('numeriUtente').innerHTML += (usersNumber); // prompt non permette di stampare fino a fine ciclo
-                    console.log(usersNumber);
-
-                    for (var j = 0; j <= (usersNumbers.length); j++) {
-                        if (usersNumbers.includes(usersNumber)) {
-                            alert("Hai già inserito questo numero")
-                            break
-                        }else {
-                            usersNumbers.push (usersNumber);
-                            break
-                        }
-                    }
-                }
+                // while (usersNumbers.length < 5) {
+                //     usersNumber = prompt("inserisci un numero tra 1 a 100, diverso da quelli inseriti in precedenza");
+                //     // document.getElementById('numeriUtente').innerHTML += (usersNumber); // prompt non permette di stampare fino a fine ciclo
+                //     console.log(usersNumber);
+                //
+                //     for (var j = 0; j <= (usersNumbers.length); j++) {
+                //         if (usersNumbers.includes(usersNumber)) {
+                //             alert("Hai già inserito questo numero")
+                //             break
+                //         }else {
+                //             usersNumbers.push (usersNumber);
+                //             break
+                //         }
+                //     }
+                // }
                 console.log(usersNumbers);
             }
 
