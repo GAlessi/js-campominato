@@ -11,6 +11,9 @@
                 justify-content: center;
                 align-items: center;
             }
+            #explosive{
+                color: red;
+            }
         </style>
     </head>
     <body>
@@ -23,6 +26,7 @@
             </div>
             <h2 id="score">Punteggio: </h2>
             <h3 id="numeriUtente">I tuoi Numeri: </h3>
+            <h3 id="explosive">Numeri esplosivi:</h3>
         </div>
 
         <!-- Consegna
@@ -42,8 +46,11 @@ con difficoltà 2 => tra 1 e 50 -->
         <script type="text/javascript">
 
             function campoMinato(massimo) {
-                var score = document.getElementById('score');
+
+                //variabili
                 var explosiveNumbers = [];
+
+                //generazione di 16 numeri causali non ripetuti
                 while (explosiveNumbers.length < 16) {
                     var rnd = Math.floor(Math.random() * massimo) + 1;
                     if (!explosiveNumbers.includes(rnd)) {
@@ -51,30 +58,45 @@ con difficoltà 2 => tra 1 e 50 -->
                     }
                 }
                 console.log(explosiveNumbers);
+
+                //inizializzo variabili
+                var score = document.getElementById('score');
                 var userNumber;
                 var userNumbers = [];
                 var result = 0;
                 var winCondition = massimo - 16;
+
+                //richiede un numero all'utente svolte le verifiche aumenta il punteggio o termina il gioco.
                 while (userNumbers.length < winCondition) {
                     userNumber = parseInt(prompt("inserisci un numero tra 1 a 100, diverso da quelli inseriti in precedenza"));
                     console.log(userNumber);
+
+                    //verifico se il giocatore ha raggiunto il punteggio massimo
                     if (result == (winCondition - 1)) {
                         console.log('Hai vinto');
                     }
+
+                    //verifico se il numero inserito rientra tra quelli "esplosivi"
                     if (explosiveNumbers.includes(userNumber)) {
                         console.log("Hai perso :( il tuo punteggio è di: " + result);
+                        document.getElementById('explosive').innerHTML += (" " + explosiveNumbers);
                         score.innerHTML += (result);
                         return
+
+                    //aggiungo un numero vincente al relativo array e aumento il punteggio di 1
                     }else if (!userNumbers.includes(userNumber)) {
                         userNumbers.push (userNumber);
-                        result += 1;
                         document.getElementById('numeriUtente').innerHTML += (" " + userNumber);
+                        result += 1;
+
+                    // chiedo all'utente di inserire un numero diverso perchè non sono accettati valori ripetuti
                     }else {
                         alert("Hai già inserito questo numero")
                     }
                 }
-                // console.log(userNumbers, result);
             }
+
+            //recupero l'id dei bottoni e richiamo la funzione con i valori corrispondenti
             var diff0 = document.getElementById('button0');
             var diff1 = document.getElementById('button1');
             var diff2 = document.getElementById('button2');
