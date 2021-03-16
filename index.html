@@ -25,7 +25,7 @@
                 <input id="button2" type="button" name="" value="Difficoltà 2">
             </div>
             <h2 id="score">Punteggio: </h2>
-            <h3 id="numeriUtente">I tuoi Numeri: </h3>
+            <h3 id="numeriUtente">I tuoi numeri vincenti:</h3>
             <h3 id="explosive">Numeri esplosivi:</h3>
         </div>
 
@@ -45,18 +45,24 @@ con difficoltà 2 => tra 1 e 50 -->
 
         <script type="text/javascript">
 
-            function campoMinato(massimo) {
-
-                //variabili
+            //generazione di 16 numeri causali non ripetuti
+            function rndNoRepeat(max, min, valueNumber) {
                 var explosiveNumbers = [];
-
-                //generazione di 16 numeri causali non ripetuti
-                while (explosiveNumbers.length < 16) {
-                    var rnd = Math.floor(Math.random() * massimo) + 1;
+                while (explosiveNumbers.length < valueNumber) {
+                    var rnd = Math.floor(Math.random() * max) + min;
                     if (!explosiveNumbers.includes(rnd)) {
                         explosiveNumbers.push (rnd);
                     }
                 }
+                return explosiveNumbers;
+            }
+
+            //funzione principale
+            function campoMinato(max) {
+
+
+                //generazione di 16 numeri causali non ripetuti
+                var explosiveNumbers = rndNoRepeat(max, 1, 16);
                 console.log(explosiveNumbers);
 
                 //inizializzo variabili
@@ -64,7 +70,7 @@ con difficoltà 2 => tra 1 e 50 -->
                 var userNumber;
                 var userNumbers = [];
                 var result = 0;
-                var winCondition = massimo - 16;
+                var winCondition = max - 16;
 
                 //richiede un numero all'utente svolte le verifiche aumenta il punteggio o termina il gioco.
                 while (userNumbers.length < winCondition) {
