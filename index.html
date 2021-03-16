@@ -77,11 +77,6 @@ con difficoltà 2 => tra 1 e 50 -->
                     userNumber = parseInt(prompt("inserisci un numero tra 1 a 100, diverso da quelli inseriti in precedenza"));
                     console.log(userNumber);
 
-                    //verifico se il giocatore ha raggiunto il punteggio massimo
-                    if (result == (winCondition - 1)) {
-                        console.log('Hai vinto');
-                    }
-
                     //verifico se il numero inserito rientra tra quelli "esplosivi"
                     if (explosiveNumbers.includes(userNumber)) {
                         console.log("Hai perso :( il tuo punteggio è di: " + result);
@@ -100,6 +95,8 @@ con difficoltà 2 => tra 1 e 50 -->
                         alert("Hai già inserito questo numero")
                     }
                 }
+                console.log('Hai vinto');
+                score.innerHTML += ("Hai vinto!!!");
             }
 
             //recupero l'id dei bottoni e richiamo la funzione con i valori corrispondenti
@@ -113,9 +110,8 @@ con difficoltà 2 => tra 1 e 50 -->
                 campoMinato(80);
             })
             diff2.addEventListener('click', function () {
-                campoMinato(50);
+                campoMinato(20);
             })
-            // console.log(diff0);
         </script>
     </body>
 </html>
