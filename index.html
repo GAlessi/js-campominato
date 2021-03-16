@@ -17,6 +17,20 @@
         </style>
     </head>
     <body>
+        <!-- Consegna
+        Il computer deve generare 16 numeri casuali tra 1 e 100.
+        I numeri non possono essere duplicati.
+        In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+        L’utente non può inserire più volte lo stesso numero.
+        Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
+        La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
+        Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
+        BONUS: (da fare solo se funziona tutto il resto)
+        all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+        con difficoltà 0 => tra 1 e 100
+        con difficoltà 1 => tra 1 e 80
+        con difficoltà 2 => tra 1 e 50 -->
+
         <div class="container">
             <h1>Campo Minato</h1>
             <div class="bottoni">
@@ -29,89 +43,8 @@
             <h3 id="explosive">Numeri esplosivi:</h3>
         </div>
 
-        <!-- Consegna
-Il computer deve generare 16 numeri casuali tra 1 e 100.
-I numeri non possono essere duplicati.
-In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-L’utente non può inserire più volte lo stesso numero.
-Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
-La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
-BONUS: (da fare solo se funziona tutto il resto)
-all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
-con difficoltà 0 => tra 1 e 100
-con difficoltà 1 => tra 1 e 80
-con difficoltà 2 => tra 1 e 50 -->
-
-        <script type="text/javascript">
-
-            //generazione di 16 numeri causali non ripetuti
-            function rndNoRepeat(max, min, valueNumber) {
-                var explosiveNumbers = [];
-                while (explosiveNumbers.length < valueNumber) {
-                    var rnd = Math.floor(Math.random() * max) + min;
-                    if (!explosiveNumbers.includes(rnd)) {
-                        explosiveNumbers.push (rnd);
-                    }
-                }
-                return explosiveNumbers;
-            }
-
-            //funzione principale
-            function campoMinato(max) {
 
 
-                //generazione di 16 numeri causali non ripetuti
-                var explosiveNumbers = rndNoRepeat(max, 1, 16);
-                console.log(explosiveNumbers);
-
-                //inizializzo variabili
-                var score = document.getElementById('score');
-                var userNumber;
-                var userNumbers = [];
-                var result = 0;
-                var winCondition = max - 16;
-
-                //richiede un numero all'utente svolte le verifiche aumenta il punteggio o termina il gioco.
-                while (userNumbers.length < winCondition) {
-                    userNumber = parseInt(prompt("inserisci un numero tra 1 a 100, diverso da quelli inseriti in precedenza"));
-                    console.log(userNumber);
-
-                    //verifico se il numero inserito rientra tra quelli "esplosivi"
-                    if (explosiveNumbers.includes(userNumber)) {
-                        console.log("Hai perso :( il tuo punteggio è di: " + result);
-                        document.getElementById('explosive').innerHTML += (" " + explosiveNumbers);
-                        score.innerHTML += (result);
-                        return
-
-                    //aggiungo un numero vincente al relativo array e aumento il punteggio di 1
-                    }else if (!userNumbers.includes(userNumber)) {
-                        userNumbers.push (userNumber);
-                        document.getElementById('numeriUtente').innerHTML += (" " + userNumber);
-                        result += 1;
-
-                    // chiedo all'utente di inserire un numero diverso perchè non sono accettati valori ripetuti
-                    }else {
-                        alert("Hai già inserito questo numero")
-                    }
-                }
-                console.log('Hai vinto');
-                score.innerHTML += ("Hai vinto!!!");
-            }
-
-            //recupero l'id dei bottoni e richiamo la funzione con i valori corrispondenti
-            var diff0 = document.getElementById('button0');
-            var diff1 = document.getElementById('button1');
-            var diff2 = document.getElementById('button2');
-            diff0.addEventListener('click', function () {
-                campoMinato(100);
-            })
-            diff1.addEventListener('click', function () {
-                campoMinato(80);
-            })
-            diff2.addEventListener('click', function () {
-                campoMinato(20);
-            })
-        </script>
+        <script src="js/script.js" charset="utf-8"></script>
     </body>
 </html>
