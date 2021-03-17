@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Campo Minato</title>
+
+        <style media="screen">
+            .container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #explosive{
+                color: red;
+            }
+
+            #campo{
+                width: 400px;
+                height: 400px;
+                background-color: grey;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            #campo input{
+                display: inline-block;
+                width: calc(400px / 10);
+                height: calc(100% / 10);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Campo Minato</h1>
+            <div class="bottoni">
+                <input id="button0" type="button" name="" value="Difficoltà 0">
+                <input id="button1" type="button" name="" value="Difficoltà 1">
+                <input id="button2" type="button" name="" value="Difficoltà 2">
+            </div>
+            <h2 id="score">Punteggio: </h2>
+            <h3 id="explosive">Numeri esplosivi:</h3>
+            <div id="campo">
+
+            </div>
+        </div>
+        <script src="js/script.js" charset="utf-8"></script>
+
+    </body>
+</html>
