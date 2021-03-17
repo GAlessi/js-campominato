@@ -45,7 +45,7 @@ function campoMinato(max) {
             if (lost) {
                 window.location.reload();
             }else {
-                while (userNumbers.length < winCondition) {
+                while (userNumbers.length < (winCondition - 1)) {
 
                     //verifico se il numero inserito rientra tra quelli "esplosivi"
                     if (explosiveNumbers.includes(userNumber)) {
@@ -79,7 +79,7 @@ var diff0 = document.getElementById('button0');
 var diff1 = document.getElementById('button1');
 var diff2 = document.getElementById('button2');
 
-//Livelli di difficoltà 
+//Livelli di difficoltà
 diff0.addEventListener('click', function () {
     this.style.backgroundColor = "#ff0000";
     campoMinato(100);
