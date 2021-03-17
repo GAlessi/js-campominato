@@ -1,6 +1,8 @@
 // creo le caselle
-for (var i = 4; i <= 103 ; i++) {
-    document.getElementById("campo").innerHTML += ('<input type="button" name="' + (i - 3) + '" value="' + (i - 3) + '">')
+function caselle(caselle) {
+    for (var i = 4; i <= (caselle + 3) ; i++) {
+        document.getElementById("campo").innerHTML += ('<input type="button" name="' + (i - 3) + '" value="' + (i - 3) + '">')
+    }
 }
 
 //generazione di 16 numeri causali non ripetuti
@@ -18,6 +20,7 @@ function rndNoRepeat(max, min, valueNumber) {
 //funzione principale
 function campoMinato(max) {
 
+    caselle(max)
 
     //generazione di 16 numeri causali non ripetuti
     var explosiveNumbers = rndNoRepeat(max, 1, 16);
@@ -75,6 +78,8 @@ function campoMinato(max) {
 var diff0 = document.getElementById('button0');
 var diff1 = document.getElementById('button1');
 var diff2 = document.getElementById('button2');
+
+//Livelli di difficoltà 
 diff0.addEventListener('click', function () {
     this.style.backgroundColor = "#ff0000";
     campoMinato(100);
@@ -82,8 +87,10 @@ diff0.addEventListener('click', function () {
 diff1.addEventListener('click', function () {
     this.style.backgroundColor = "#ff0000";
     campoMinato(80);
+
 })
 diff2.addEventListener('click', function () {
     this.style.backgroundColor = "#ff0000";
     campoMinato(50);
+
 })
